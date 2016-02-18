@@ -4,14 +4,37 @@
 
 # compile this file using: pandoc.exe .\Report.org -o Report.pdf --template=.\template.tex
 
-* Analysis Method
-We used the python library =youtube-dl= to build a crawler (=youtube-stats.py=). The crawler gets a youtube playlist 
+* Data Generation Method
+We used the python library =youtube-dl= to build a crawler (=youtube-csv.py=). The crawler gets a youtube playlist 
 as input and downloads the MPD's for all videos contained in this playlist. For our evaluation we used a playlist 
 which contains the 500 most played videos of all time (=https://www.youtube.com/playlist?list=PLirAqAtl_h2r5g8xGajEwdXd3x1sZh8hC=). 
 This results in a database of 500 MPD files for evaluation.
 
-The output of the crawling process is a single =CSV= file where each line represents a single representation of a MPD. We 
-included following data fields into this file:
+The output of the crawling process are two CSV files. In the first file (=representation_stats.csv=) each line represents a single 
+representation of a MPD. In the second file (=video_stats.csv=) each line represents a single MPD along with the number of
+representations contained in it. Among others we included following data fields into these files:
 
-- 
+- *Youtube ID*: The video this representation belongs to. Each video has a unique ID.
+- *Video Codec*: The video codec used in this representation.
+- *Width*: The width of the video.
+- *Height*: The height of the video.
+- *FPS*: Frames per Second of this representation.
+- *Bitrate*: The bitrate of this representation.
+
+* Data Analysis Method
+For data analysis and visualization we build an EXCEL sheet (=Evaluation.xlsx=)to which we imported the CSV files generated
+by the crawler. Using EXCEL's visualization tools, it was easy to generate some diagrams for the imported data.
+
+* Results
+#+CAPTION: Frequency of Bitrates (grouped)
+#+NAME: fig:1
+[[.\frequency-bitrate.png]]
+
+#+CAPTION: Frequency of Resolutions (top 20)
+#+NAME: fig:2
+[[.\frequency-resolution.png]]
+
+#+CAPTION: Number of Representations per MPD
+#+NAME: fig:3
+[[.\number-representations.png]]
 
