@@ -1,0 +1,121 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+% \usepackage[ngerman]{babel}
+\usepackage{amsmath,amsfonts,amsthm,amssymb} % Math packages
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{wasysym}
+\usepackage{enumitem}
+\usepackage{stmaryrd}
+% \usepackage{subfigure}
+\usepackage{wrapfig}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+\usepackage{lscape}
+\usepackage{geometry}
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage{fancyhdr} % Custom headers and footers
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+% images are show too large by default.
+\pdfimageresolution=300
+
+% fix for pandoc 1.14
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\geometry{a4paper, portrait, margin=1.0in}
+% \selectlanguage{ngerman}
+\selectlanguage{english}
+% \allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+$if(author)$
+\def\authorname{$author$}
+$else$
+\def\authorname{TODO}
+$endif$
+$if(title)$
+\def\titlename{$title$}
+$else$
+\def\titlename{TODO}
+$endif$
+$if(course)$
+\def\coursename{$course$}
+$else$
+\def\coursename{TODO}
+$endif$
+
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead[L]{\authorname} % Page header
+\fancyhead[R]{\coursename} % Page header
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{Seite~\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Hide header underlines
+\renewcommand{\footrulewidth}{0pt} % Hide footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+% \fancyheadoffset{0cm}
+
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+% \setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\setlength{\parskip}{1em} % set vertical spacing of parahraphs
+
+\lstdefinestyle{base}{
+  language=C,
+  emptylines=1,
+  breaklines=true,
+  basicstyle=\ttfamily\color{blue},
+  commentstyle=\ttfamily\color{blue},
+  keywordstyle=\ttfamily\color{blue},
+  numberstyle=\ttfamily\color{blue},
+  stringstyle=\ttfamily\color{blue}
+}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{
+\normalfont \normalsize
+% \textsc{Alpe-Adria Universität Klagenfurt} \\ [25pt] % Your university, school and/or department name(s)
+% \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge \titlename\\ % The assignment title
+\horrule{0.2pt} % Thick bottom horizontal rule
+}
+
+\author{\authorname} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+\maketitle % Print the title
+\lstset{style=base}
+
+$body$
+
+\end{document}
