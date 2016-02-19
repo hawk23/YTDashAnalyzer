@@ -61,3 +61,12 @@ bitrates mp4/avc and webm/vp9 are nearly evenly used.
 #+NAME: fig:2
 [[.\frequency-bitrate-cleaned.png]]
 
+** Number of Representations
+As you can see in figure [[fig:3]] most of the MPD's contain 12 video representations. They are separated
+into two adaptation sets, one for mp4/avc and one for webm/vp9, each containing 6 representations. These
+six representations are also the most frequent as shown in figure [[fig:1]].
+
+#+CAPTION: Number of Representations per MPD
+#+NAME: fig:3
+[[.\number-representations.png]]
+
