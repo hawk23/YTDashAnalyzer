@@ -7,8 +7,7 @@
 * Data Generation Method
 We used the python library =youtube-dl= to build a crawler (=youtube-csv.py=). The crawler gets a youtube playlist 
 as input and downloads the MPD's for all videos contained in this playlist. For our evaluation we used a playlist 
-which contains the 500 most played videos of all time (=https://www.youtube.com/playlist?list=PLirAqAtl_h2r5g8xGajEwdXd3x1sZh8hC=). 
-This results in a database of 500 MPD files for evaluation.
+which contains the 500 most played videos of all time. This results in a database of 500 MPD files for evaluation.
 
 The output of the crawling process are two CSV files. In the first file (=representation_stats.csv=) each line represents a single 
 representation of a MPD. In the second file (=video_stats.csv=) each line represents a single MPD along with the number of
@@ -26,15 +25,39 @@ For data analysis and visualization we build an EXCEL sheet (=Evaluation.xlsx=)t
 by the crawler. Using EXCEL's visualization tools, it was easy to generate some diagrams for the imported data.
 
 * Results
-#+CAPTION: Frequency of Bitrates (grouped)
-#+NAME: fig:1
-[[.\frequency-bitrate.png]]
+From the expected 500 MPD's only 497 could be loaded cause three of the videos where not available in Austria.
+
+** Analysis of spatial resolutions
+Our dataset contained 88 differenct spatial resoutions which where used by YouTube. In [[fig:1]] only the 20 most
+used resoutions are shown. There are a lot of resolutions which where only used two or three times in our
+dataset.
+
+The most used resolution is *640x360* followed by *1280x720*. As [[fig:1]] reveals, the MPD's mostly contain 
+one adaptation set for mp4/avc and one adaptation set for webm/vp9.
+
+There is an significant decrease in the frequency after the first 6 most frequent resolutions. These six
+resolutions seem to be the standard resolutions used in most of the MPD's.
 
 #+CAPTION: Frequency of Resolutions (top 20)
-#+NAME: fig:2
+#+NAME: fig:1
 [[.\frequency-resolution.png]]
 
-#+CAPTION: Number of Representations per MPD
-#+NAME: fig:3
-[[.\number-representations.png]]
+** Analysis of video bitrates
+Since the bitrate values where very different (3358 different values) we assigned the to several bins:
+
+- <= 64 kbit/s
+- 65 - 128 kbit/s
+- 129 - 256 kbit/s
+- 257 - 512 kbit/s
+- 513 - 1024 kbit/s
+- 1025 - 2048 kbit/s
+- 2049 - 4096 kbit/s
+- > 4096 kbit/s
+
+For the higher bitrates larger than 4096 kbit/s mainly mp4/avc was used for videos. For all other lower
+bitrates mp4/avc and webm/vp9 are nearly evenly used.
+
+#+CAPTION: Frequency of Bitrates (grouped) 
+#+NAME: fig:2
+[[.\frequency-bitrate-cleaned.png]]
 

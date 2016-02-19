@@ -48,3 +48,9 @@ crashlytics-build.properties
 
 # Created by .ignore support plugin (hsz.mobi)
 ~$Evaluation.xlsx
+Report/Report.aux
+Report/Report.bbl
+Report/Report.blg
+Report/Report.log
+Report/Report.synctex.gz
+youtube-dl.exe

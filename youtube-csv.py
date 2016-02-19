@@ -36,7 +36,7 @@ def analyze_video(video):
                     rep.get('ext', '-'),
                     rep.get('format'),
                     "{0}x{1}".format(rep.get('width', '?'), rep.get('height', '?')),
-                    rep.get('tbr', rep.get('abr', 'none'))
+                    rep.get('tbr', 'none')
                 ])
 
                 repCount += 1
